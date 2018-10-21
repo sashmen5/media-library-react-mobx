@@ -9,7 +9,6 @@ import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction/L
 import IconButton from "@material-ui/core/IconButton/IconButton";
 import Delete from '@material-ui/icons/Delete';
 import Edit from '@material-ui/icons/Edit';
-import {muscles} from "../../store";
 import Form from "./Form";
 
 

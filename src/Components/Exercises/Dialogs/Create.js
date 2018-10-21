@@ -1,6 +1,5 @@
 import React, {Component, Fragment} from 'react';
 import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
@@ -19,10 +18,16 @@ export default class extends Component {
         })
     };
 
+    handleFromSubmit = exercise => {
+        this.handleToogle();
+
+        this.props.onCreate(exercise);
+    };
+
 
     render() {
         const {open} = this.state;
-        const {muscles, onCreate} = this.props;
+        const {muscles} = this.props;
         return <Fragment>
             <Button
                 variant="fab"
@@ -35,7 +40,7 @@ export default class extends Component {
                 open={open}
                 onClose={this.handleToogle}
             >
-                <DialogTitle id="form-dialog-title">
+                <DialogTitle>
                     Create new exersice
                 </DialogTitle>
                 <DialogContent>
@@ -44,7 +49,7 @@ export default class extends Component {
                     </DialogContentText>
                     <Form
                         muscles={muscles}
-                        onSubmit={onCreate}
+                        onSubmit={this.handleFromSubmit}
                     />
                 </DialogContent>
             </Dialog>

@@ -4,16 +4,9 @@ import FormControl from "@material-ui/core/FormControl/FormControl";
 import InputLabel from "@material-ui/core/InputLabel/InputLabel";
 import Select from "@material-ui/core/Select/Select";
 import MenuItem from "@material-ui/core/MenuItem/MenuItem";
-import {withStyles} from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 
-const styles = theme => ({
-    FormControl: {
-        width: 200
-    }
-});
-
-export default withStyles(styles)(class extends Component {
+export default class extends Component {
     state = this.getInitialState();
 
     getInitialState() {
@@ -26,13 +19,7 @@ export default withStyles(styles)(class extends Component {
         }
     }
 
-    static getDerivedStateFromProps({exercise}) {
-        return exercise || null;
-    }
-
-
     handleChange = name => ({target: {value}}) => {
-        debugger;
         this.setState({
             [name]: value
         })
@@ -44,25 +31,22 @@ export default withStyles(styles)(class extends Component {
             id: this.state.title.toLowerCase().replace(/ /g, '-'),
             ...this.state.exercise
         });
-        this.setState(this.getInitialState())
     };
 
 
     render() {
         const {title, description, muscles} = this.state;
-        const {classes, muscles: categories, exercise} = this.props;
+        const { muscles: categories, exercise} = this.props;
         return <form>
             <TextField
                 label="Title"
                 value={title}
                 onChange={this.handleChange('title')}
                 margin="normal"
-                className={classes.FormControl}
+								fullWidth
             />
             <br/>
-            <FormControl
-                className={classes.FormControl}
-            >
+            <FormControl fullWidth>
                 <InputLabel htmlFor="muscles">
                     Muscles
                 </InputLabel>
@@ -87,16 +71,17 @@ export default withStyles(styles)(class extends Component {
                 value={description}
                 multiline
                 rows="4"
-                className={classes.FormControl}
                 onChange={this.handleChange('description')}
                 margin="normal"
+								fullWidth
             />
             <br/>
             <Button color="primary"
                     variant="contained"
+										disabled={!title || !muscles}
                     onClick={this.handleSubmit}>
                 {exercise ? 'Edit' : 'Create'}
             </Button>
         </form>
     }
-})
+}

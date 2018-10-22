@@ -39,6 +39,8 @@ export default class extends Component {
             <Dialog
                 open={open}
                 onClose={this.handleToogle}
+								fullWidth
+								maxWidth='sm'
             >
                 <DialogTitle>
                     Create new exersice

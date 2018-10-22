@@ -9,7 +9,7 @@ import Button from "@material-ui/core/Button";
 
 const styles = theme => ({
     FormControl: {
-        width: 500
+        width: 200
     }
 });
 
@@ -26,10 +26,8 @@ export default withStyles(styles)(class extends Component {
         }
     }
 
-    componentWillReceiveProps({exercise}) {
-        this.setState({
-            ...exercise
-        })
+    static getDerivedStateFromProps({exercise}) {
+        return exercise || null;
     }
 
 
@@ -95,7 +93,7 @@ export default withStyles(styles)(class extends Component {
             />
             <br/>
             <Button color="primary"
-                    variant="raised"
+                    variant="contained"
                     onClick={this.handleSubmit}>
                 {exercise ? 'Edit' : 'Create'}
             </Button>

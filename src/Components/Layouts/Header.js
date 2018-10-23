@@ -3,18 +3,27 @@ import CreateDialog from '../Exercises/Dialogs/Create';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-export default ({muscles, onExerciseCreate}) =>
+import withStyles from "@material-ui/core/es/styles/withStyles";
+
+const styles = {
+	flex: {
+		flex: 1
+	}
+};
+
+export default withStyles(styles)(({muscles, onExerciseCreate, classes}) =>
 	<AppBar position="static">
 		<Toolbar>
 			<Typography
+				className={classes.flex}
 				variant="headline"
-				style={{flex: 1}}
 				color="inherit">
 				Exercises Database
 			</Typography>
 			<CreateDialog
-                muscles={muscles}
-                onCreate={onExerciseCreate}
-            />
+				muscles={muscles}
+				onCreate={onExerciseCreate}
+			/>
 		</Toolbar>
 	</AppBar>
+)

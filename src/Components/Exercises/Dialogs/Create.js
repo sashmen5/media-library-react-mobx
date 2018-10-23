@@ -33,6 +33,7 @@ export default class extends Component {
                 variant="fab"
                 aria-label="Add"
                 mini
+                color='secondary'
                 onClick={this.handleToogle}>
                 <AddIcon/>
             </Button>

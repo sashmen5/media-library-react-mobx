@@ -6,7 +6,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
 import Form from "../Form";
-import {Consumer, withContext} from "../../../context";
+import { withContext} from "../../../context";
 
 class Create extends Component {
 	state = {
